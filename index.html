@@ -35,7 +35,7 @@
 <body>
 
   <h1>Client View</h1>
-  <p>Send data to server.js</p>
+  <p>Send data to server</p>
   <div id="my-button">send</div>
 
   <script src="/socket.io/socket.io.js"></script>
@@ -50,7 +50,6 @@
     });
 
     // push data to server on button press
-
     document.querySelector('#my-button').addEventListener('click', function () {
       socket.emit('data from client', 'click event');
     });
