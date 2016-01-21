@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Socket.IO chat</title>
+
+  <style>
+
+    body {
+      font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif; 
+      font-weight: 300;
+      margin: 10px;
+      padding: 10px;
+    }
+
+    #my-button {
+      background-color: #ff0000;
+      color: #FFF;
+      padding: 10px;
+      display: inline-block;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    #my-button:hover {
+      background-color: #d30000;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Client View</h1>
+  <p>Send data to server.js</p>
+  <div id="my-button">send</div>
+
+  <script src="/socket.io/socket.io.js"></script>
+
+  <script>
+
+    var socket = io();
+
+    // listen for 'data from server' event, log incoming it to the browser console
+    socket.on('data from server', function(data) {
+      console.log('data from server: ', data)
+    });
+
+    // push data to server on button press
+
+    document.querySelector('#my-button').addEventListener('click', function () {
+      socket.emit('data from client', 'click event');
+    });
+
+  </script>
+
+</body>
+</html>
